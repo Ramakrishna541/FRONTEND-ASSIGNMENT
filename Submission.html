@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Data in Search Box</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+
+        form {
+            width: 350px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #searchBox {
+            margin-top: 20px;
+            width: 350px;
+            padding: 10px;
+        }
+
+        #output {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f2f2f2;
+            width: 350px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>User Information Form</h1>
+
+    <form id="userForm">
+
+        <label>Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <label>Email:</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <h2>Search Box</h2>
+
+    <input type="text" id="searchBox" placeholder="Submitted data will appear here">
+
+    <div id="output"></div>
+
+    <script>
+        let users = [];
+
+        const form = document.getElementById("userForm");
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+
+            let user = {
+                name: name,
+                email: email
+            };
+
+            users.push(user);
+
+            document.getElementById("searchBox").value =
+                "Name: " + name + ", Email: " + email;
+
+            document.getElementById("output").innerHTML =
+                "<strong>Submitted Data:</strong><br>" +
+                "Name: " + name + "<br>" +
+                "Email: " + email;
+
+            form.reset();
+        });
+    </script>
+
+</body>
+</html>
